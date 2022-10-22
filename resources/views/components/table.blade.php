@@ -2,7 +2,7 @@
     <thead class="bg-blue-800 text-white uppercase">
         <tr class="[&>th]:py-4 [&>th]:border [&>th]:border-gray-500">
             @php
-                $qpf = array_filter($qp, fn($p) => $p !== 'sort-field' ,ARRAY_FILTER_USE_KEY);
+                $qpf = array_filter($qp, static fn($p) => $p !== 'sort-field' ,ARRAY_FILTER_USE_KEY);
             @endphp
             <th scope="col"
                 class="tracking-wider"><a href="/?sort-field=name&amp;{{http_build_query($qpf)}}">Name</a></th>
