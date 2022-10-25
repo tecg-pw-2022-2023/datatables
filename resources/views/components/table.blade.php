@@ -1,4 +1,4 @@
-<table {{ $attributes->class(['w-full mb-4']) }}>
+<table class="w-full mb-4">
     <thead class="bg-blue-800 text-white uppercase">
         <tr class="[&>th]:py-4 [&>th]:border [&>th]:border-gray-500">
             @php
@@ -13,13 +13,5 @@
             </th>
         </tr>
     </thead>
-    <tbody>
-        @foreach($contacts as $contact)
-            <tr class="{{$loop->even?'bg-gray-50':'bg-white'}} [&>td]:p-4 [&>td]:border">
-                <td>{{$contact->name}}</td>
-                <td>{{$contact->email}}</td>
-                <td>{{$contact->birthdate->toFormattedDateString()}}</td>
-            </tr>
-        @endforeach
-    </tbody>
+    <x-tbody :contacts="$contacts"/>
 </table>

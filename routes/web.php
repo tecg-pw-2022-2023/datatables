@@ -33,3 +33,17 @@ Route::get('/', function () {
                 ->paginate($perPage),
     ]);
 });
+
+Route::get('/ajax',
+    function () {
+        $requestData = request()->all();
+        extract($requestData);
+        return view('components.table', [
+            'contacts' => Contact::query()
+                ->where('name', 'like', '%'.$searchTerm.'%')
+                ->orWhere('email', 'like', '%'.$searchTerm.'%')
+                ->orderBy($sortField, $sortOrder)
+                ->paginate($perPage),
+            'qp' => $requestData,
+        ]);
+    });
